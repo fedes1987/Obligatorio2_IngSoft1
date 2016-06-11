@@ -8,6 +8,8 @@ package eiralesalomon.Interfaz;
 import java.util.*;
 import eiralesalomon.Usuario;
 import eiralesalomon.Sistema;
+import eiralesalomon.Compra;
+import eiralesalomon.Producto;
 
 /**
  *
@@ -165,7 +167,8 @@ public class AltaUsuario extends javax.swing.JFrame {
             }else{ 
                 if (edad >= 18){
                     alias = this.txtAlias.getText();                
-                    Usuario usuario = new Usuario(nombre, alias, fechaNac);
+                    Usuario usuario = new Usuario(nombre, alias, fechaNac, new ArrayList<Producto>(),
+                    new ArrayList<Compra>());
                     sistema.agregarUsuario(usuario);
                     //sistema.guardarUsuario();
                     sistema.getListaAlias().add(alias);
