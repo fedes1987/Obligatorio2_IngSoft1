@@ -8,6 +8,7 @@ package eiralesalomon;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
@@ -41,10 +42,32 @@ public class UsuarioTest {
         Usuario user = new Usuario();
         user.CargarProdsDeLista();
        
-        ArrayList<Producto> obtenido = user.getListaProd();
+        ArrayList<Producto> arrayEsperado = user.getListaProd();
         
-        assertEquals(listaProd, obtenido);
+        assertEquals(true, miComparador(listaProd, arrayEsperado));
         
+    }
+    
+    public boolean miComparador(ArrayList<Producto> obtenido, ArrayList<Producto> esperado){
+        if(obtenido.size() != esperado.size()){
+            return false;
+        }
+        else{
+            for(int i=0; i<obtenido.size(); i++){
+                for (int j=0; j<esperado.size(); j++){
+                    Producto prodA;
+                    Producto prodB;
+                    prodA = obtenido.get(i);
+                    prodB = esperado.get(j);
+                    if(prodA.equals(prodB)){
+                    }else{
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+       
     }
     
 }
