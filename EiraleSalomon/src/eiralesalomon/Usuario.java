@@ -8,6 +8,12 @@ package eiralesalomon;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  *
@@ -100,5 +106,44 @@ public class Usuario implements Serializable{
     public void agregarPartida(Compra unCompra){
         this.listaCompras.add(unCompra);
     }
+    
+    public void CargarProdsDeLista() {
+	String csvFile = "ListaProductos.csv";
+	BufferedReader br = null;
+	String line = "";
+	String csvSplitBy = ",";
+        ArrayList<Producto> productosDeArchivo = new ArrayList();
+         
+	try {
+            br = new BufferedReader(new FileReader(csvFile));
+            while ((line = br.readLine()) != null) { 
+                Producto prod = new Producto();
+
+                //Utilizar coma como separador
+                String[] attsProd = line.split(csvSplitBy);
+                prod.setNombreProd(attsProd[0]);
+
+                int stockMin;
+                stockMin = Integer.parseInt(attsProd[1]);
+                prod.setStockMin(stockMin);
+
+                productosDeArchivo.add(prod);
+            }
+	} catch (FileNotFoundException e) {
+            e.printStackTrace();
+	} catch (IOException e) {
+            e.printStackTrace();
+	} finally {
+            //cuando termina de iterar se setea el Arraylist del usuario con los valores leídos del archivo
+            this.setListaProd(productosDeArchivo);
+            if (br != null) {
+                try {
+                        br.close();
+                } catch (IOException e) {
+                        e.printStackTrace();
+                }
+            }
+	}
+  }
    
 }

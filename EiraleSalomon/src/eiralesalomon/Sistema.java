@@ -17,7 +17,7 @@ public class Sistema implements Serializable{
 
     private ArrayList<Usuario> listaUsuarios;
     private ArrayList<String> listaAlias; 
-
+    
     public void setListaUsuarios(ArrayList<Usuario> listaUsuarios) {
         this.listaUsuarios = listaUsuarios;
     }
