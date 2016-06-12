@@ -72,4 +72,11 @@ public class Producto implements Serializable {
         return (stockAct < stockMin) || (stockAct == stockMin);
     }
     
+    @Override
+    public boolean equals(Object o){
+        
+        return this.getNombreProd()==((Producto)o).getNombreProd() && this.getStockMin()==((Producto)o).getStockMin();
+         
+    }    
+    
 }
