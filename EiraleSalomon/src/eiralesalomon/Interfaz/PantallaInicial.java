@@ -5,8 +5,13 @@
  */
 package eiralesalomon.Interfaz;
 
+import eiralesalomon.Compra;
+import eiralesalomon.Producto;
 import eiralesalomon.Usuario;
 import eiralesalomon.Sistema;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.util.*;
 
 /**
  *
@@ -23,7 +28,18 @@ public class PantallaInicial extends javax.swing.JFrame {
     public PantallaInicial(Sistema sistema) {
         initComponents();
         this.sistema = sistema;
-        JPPrincipal.setVisible(false);
+        /*Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        setBounds(0,0,screenSize.width, screenSize.height);
+        setVisible(true);*/
+        JPPrincipal.setVisible(true);
+        //remover panel
+        JPPrincipal.removeAll();
+        JPPrincipal.repaint();
+        JPPrincipal.revalidate();
+        //agregar panel
+        JPPrincipal.add(JPLogin);
+        JPPrincipal.repaint();
+        JPPrincipal.revalidate();
     }
 
     /**
@@ -35,17 +51,32 @@ public class PantallaInicial extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        JPInicioSesion = new javax.swing.JPanel();
-        lblInfo = new javax.swing.JLabel();
-        lblNombreUsuario = new javax.swing.JLabel();
-        txtNombreUsuario = new javax.swing.JTextField();
-        btnIniciarSesion = new javax.swing.JButton();
-        btnRegistrarse = new javax.swing.JButton();
         JPPrincipal = new javax.swing.JPanel();
-        btnIngresarGastoFijo = new javax.swing.JButton();
-        btnIngresarProducto = new javax.swing.JButton();
-        btnIngresarCompra = new javax.swing.JButton();
-        btnIndicarUsoProducto = new javax.swing.JButton();
+        JPLogin = new javax.swing.JPanel();
+        jLabelBienvenida = new javax.swing.JLabel();
+        JLabelMensajeBienvenida = new javax.swing.JLabel();
+        jLabelUsuario = new javax.swing.JLabel();
+        jTextFieldUsuarioAlias = new javax.swing.JTextField();
+        jButtonIniciar = new javax.swing.JButton();
+        jButtonRegistrarme = new javax.swing.JButton();
+        jLabelMsjError = new javax.swing.JLabel();
+        JPPantallaPrinc = new javax.swing.JPanel();
+        JPMenu = new javax.swing.JPanel();
+        JPVarios = new javax.swing.JPanel();
+        JPVarios1 = new javax.swing.JPanel();
+        JPVarios2 = new javax.swing.JPanel();
+        JPVarios3 = new javax.swing.JPanel();
+        JPRegistrarme = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        lblAlias = new javax.swing.JLabel();
+        txtAlias = new javax.swing.JTextField();
+        lblFechaNac = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        lblNombre = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
+        btnCancelar = new javax.swing.JButton();
+        lblInfo = new javax.swing.JLabel();
+        dtpFechaNac = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menú Principal - Sistema de Gestión de gastos del hogar");
@@ -57,168 +88,428 @@ public class PantallaInicial extends javax.swing.JFrame {
                 formWindowClosing(evt);
             }
         });
+        getContentPane().setLayout(new java.awt.CardLayout());
 
-        JPInicioSesion.setBorder(javax.swing.BorderFactory.createTitledBorder("Iniciar sesión"));
+        jLabelBienvenida.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabelBienvenida.setText("BIENVENIDO");
 
-        lblInfo.setText("Inicia sesión para comenzar a utilizar el sistema");
+        JLabelMensajeBienvenida.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        JLabelMensajeBienvenida.setText("Inicie sesión para empezar a usar el gestor de gastos");
 
-        lblNombreUsuario.setText("Nombre de usuario");
+        jLabelUsuario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabelUsuario.setText("Usuario");
 
-        btnIniciarSesion.setText("Iniciar Sesión");
-        btnIniciarSesion.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldUsuarioAlias.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jButtonIniciar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jButtonIniciar.setText("Iniciar Sesión");
+        jButtonIniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIniciarSesionActionPerformed(evt);
+                jButtonIniciarActionPerformed(evt);
             }
         });
 
-        btnRegistrarse.setText("Registrarme");
-        btnRegistrarse.addActionListener(new java.awt.event.ActionListener() {
+        jButtonRegistrarme.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jButtonRegistrarme.setText("Registrarme");
+        jButtonRegistrarme.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegistrarseActionPerformed(evt);
+                jButtonRegistrarmeActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout JPInicioSesionLayout = new javax.swing.GroupLayout(JPInicioSesion);
-        JPInicioSesion.setLayout(JPInicioSesionLayout);
-        JPInicioSesionLayout.setHorizontalGroup(
-            JPInicioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JPInicioSesionLayout.createSequentialGroup()
-                .addGroup(JPInicioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(JPInicioSesionLayout.createSequentialGroup()
-                        .addGap(105, 105, 105)
-                        .addComponent(lblInfo))
-                    .addGroup(JPInicioSesionLayout.createSequentialGroup()
-                        .addGap(48, 48, 48)
-                        .addComponent(lblNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+        jLabelMsjError.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        javax.swing.GroupLayout JPLoginLayout = new javax.swing.GroupLayout(JPLogin);
+        JPLogin.setLayout(JPLoginLayout);
+        JPLoginLayout.setHorizontalGroup(
+            JPLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 656, Short.MAX_VALUE)
+            .addGroup(JPLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(JPLoginLayout.createSequentialGroup()
+                    .addGroup(JPLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(JPLoginLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(jLabelMsjError, javax.swing.GroupLayout.PREFERRED_SIZE, 318, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, JPLoginLayout.createSequentialGroup()
+                            .addGap(169, 169, 169)
+                            .addGroup(JPLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPLoginLayout.createSequentialGroup()
+                                    .addComponent(jLabelUsuario)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(jTextFieldUsuarioAlias, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(63, 63, 63))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPLoginLayout.createSequentialGroup()
+                                    .addComponent(jLabelBienvenida)
+                                    .addGap(103, 103, 103))
+                                .addComponent(JLabelMensajeBienvenida, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPLoginLayout.createSequentialGroup()
+                                    .addGroup(JPLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jButtonRegistrarme, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jButtonIniciar))
+                                    .addGap(101, 101, 101)))))
+                    .addContainerGap(169, Short.MAX_VALUE)))
+        );
+        JPLoginLayout.setVerticalGroup(
+            JPLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 524, Short.MAX_VALUE)
+            .addGroup(JPLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(JPLoginLayout.createSequentialGroup()
+                    .addGap(130, 130, 130)
+                    .addComponent(jLabelBienvenida)
+                    .addGap(18, 18, 18)
+                    .addComponent(JLabelMensajeBienvenida)
+                    .addGap(39, 39, 39)
+                    .addComponent(jLabelMsjError)
+                    .addGap(18, 18, 18)
+                    .addGroup(JPLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextFieldUsuarioAlias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelUsuario))
+                    .addGap(36, 36, 36)
+                    .addComponent(jButtonIniciar)
+                    .addGap(45, 45, 45)
+                    .addComponent(jButtonRegistrarme)
+                    .addContainerGap(130, Short.MAX_VALUE)))
+        );
+
+        javax.swing.GroupLayout JPMenuLayout = new javax.swing.GroupLayout(JPMenu);
+        JPMenu.setLayout(JPMenuLayout);
+        JPMenuLayout.setHorizontalGroup(
+            JPMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 656, Short.MAX_VALUE)
+        );
+        JPMenuLayout.setVerticalGroup(
+            JPMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 81, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout JPVarios1Layout = new javax.swing.GroupLayout(JPVarios1);
+        JPVarios1.setLayout(JPVarios1Layout);
+        JPVarios1Layout.setHorizontalGroup(
+            JPVarios1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        JPVarios1Layout.setVerticalGroup(
+            JPVarios1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 448, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout JPVarios2Layout = new javax.swing.GroupLayout(JPVarios2);
+        JPVarios2.setLayout(JPVarios2Layout);
+        JPVarios2Layout.setHorizontalGroup(
+            JPVarios2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        JPVarios2Layout.setVerticalGroup(
+            JPVarios2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 448, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout JPVarios3Layout = new javax.swing.GroupLayout(JPVarios3);
+        JPVarios3.setLayout(JPVarios3Layout);
+        JPVarios3Layout.setHorizontalGroup(
+            JPVarios3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        JPVarios3Layout.setVerticalGroup(
+            JPVarios3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 448, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout JPVariosLayout = new javax.swing.GroupLayout(JPVarios);
+        JPVarios.setLayout(JPVariosLayout);
+        JPVariosLayout.setHorizontalGroup(
+            JPVariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(JPVariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(JPVariosLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(JPVarios1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
+            .addGroup(JPVariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(JPVariosLayout.createSequentialGroup()
+                    .addGap(20, 20, 20)
+                    .addComponent(JPVarios2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
+            .addGroup(JPVariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(JPVariosLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(JPVarios3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGap(20, 20, 20)))
+        );
+        JPVariosLayout.setVerticalGroup(
+            JPVariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 490, Short.MAX_VALUE)
+            .addGroup(JPVariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(JPVariosLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(JPVarios1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
+            .addGroup(JPVariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(JPVariosLayout.createSequentialGroup()
+                    .addGap(21, 21, 21)
+                    .addComponent(JPVarios2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGap(1, 1, 1)))
+            .addGroup(JPVariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(JPVariosLayout.createSequentialGroup()
+                    .addGap(31, 31, 31)
+                    .addComponent(JPVarios3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+
+        javax.swing.GroupLayout JPPantallaPrincLayout = new javax.swing.GroupLayout(JPPantallaPrinc);
+        JPPantallaPrinc.setLayout(JPPantallaPrincLayout);
+        JPPantallaPrincLayout.setHorizontalGroup(
+            JPPantallaPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(JPMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(JPVarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        JPPantallaPrincLayout.setVerticalGroup(
+            JPPantallaPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JPPantallaPrincLayout.createSequentialGroup()
+                .addComponent(JPMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(JPVarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel2.setText("Registrarme");
+
+        lblAlias.setText("Alias");
+
+        lblFechaNac.setText("Fecha Nacimiento");
+
+        jButton1.setText("Confirmar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        lblNombre.setText("Nombre");
+
+        txtNombre.setToolTipText("");
+
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout JPRegistrarmeLayout = new javax.swing.GroupLayout(JPRegistrarme);
+        JPRegistrarme.setLayout(JPRegistrarmeLayout);
+        JPRegistrarmeLayout.setHorizontalGroup(
+            JPRegistrarmeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JPRegistrarmeLayout.createSequentialGroup()
+                .addGroup(JPRegistrarmeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(JPRegistrarmeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPRegistrarmeLayout.createSequentialGroup()
+                            .addGap(278, 278, 278)
+                            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(JPRegistrarmeLayout.createSequentialGroup()
+                            .addGap(178, 178, 178)
+                            .addGroup(JPRegistrarmeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(JPRegistrarmeLayout.createSequentialGroup()
+                                    .addGroup(JPRegistrarmeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lblNombre)
+                                        .addComponent(lblFechaNac)
+                                        .addComponent(lblAlias))
+                                    .addGroup(JPRegistrarmeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(JPRegistrarmeLayout.createSequentialGroup()
+                                            .addGap(16, 16, 16)
+                                            .addComponent(txtAlias, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(JPRegistrarmeLayout.createSequentialGroup()
+                                            .addGap(18, 18, 18)
+                                            .addComponent(dtpFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(lblInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(JPRegistrarmeLayout.createSequentialGroup()
+                        .addGap(267, 267, 267)
+                        .addComponent(jLabel2))
+                    .addGroup(JPRegistrarmeLayout.createSequentialGroup()
+                        .addGap(242, 242, 242)
+                        .addComponent(jButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(JPInicioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(JPInicioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(btnRegistrarse, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnIniciarSesion, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)))))
-                .addContainerGap(63, Short.MAX_VALUE))
+                        .addComponent(btnCancelar)))
+                .addContainerGap(192, Short.MAX_VALUE))
         );
-        JPInicioSesionLayout.setVerticalGroup(
-            JPInicioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(JPInicioSesionLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblInfo)
-                .addGap(39, 39, 39)
-                .addGroup(JPInicioSesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblNombreUsuario)
-                    .addComponent(txtNombreUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(41, 41, 41)
-                .addComponent(btnIniciarSesion)
+        JPRegistrarmeLayout.setVerticalGroup(
+            JPRegistrarmeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JPRegistrarmeLayout.createSequentialGroup()
+                .addGap(126, 126, 126)
+                .addComponent(jLabel2)
+                .addGap(58, 58, 58)
+                .addGroup(JPRegistrarmeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNombre)
+                    .addComponent(lblNombre))
                 .addGap(18, 18, 18)
-                .addComponent(btnRegistrarse)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addGroup(JPRegistrarmeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblFechaNac)
+                    .addComponent(dtpFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(JPRegistrarmeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAlias)
+                    .addComponent(txtAlias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblInfo)
+                .addGap(84, 84, 84)
+                .addGroup(JPRegistrarmeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(btnCancelar))
+                .addGap(158, 158, 158))
         );
-
-        JPPrincipal.setBorder(javax.swing.BorderFactory.createTitledBorder("Menú principal"));
-
-        btnIngresarGastoFijo.setText("Ingresar Gasto Fijo");
-        btnIngresarGastoFijo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIngresarGastoFijoActionPerformed(evt);
-            }
-        });
-
-        btnIngresarProducto.setText("Ingresar Producto");
-
-        btnIngresarCompra.setText("Ingresar Compra Diaria");
-
-        btnIndicarUsoProducto.setText("Indicar Uso de Producto");
 
         javax.swing.GroupLayout JPPrincipalLayout = new javax.swing.GroupLayout(JPPrincipal);
         JPPrincipal.setLayout(JPPrincipalLayout);
         JPPrincipalLayout.setHorizontalGroup(
             JPPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPPrincipalLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(JPPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnIngresarGastoFijo)
-                    .addComponent(btnIngresarProducto))
-                .addGap(49, 49, 49)
-                .addGroup(JPPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnIndicarUsoProducto)
-                    .addComponent(btnIngresarCompra))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(JPLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(JPPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(JPPrincipalLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(JPPantallaPrinc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(JPPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPPrincipalLayout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(JPRegistrarme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap()))
         );
         JPPrincipalLayout.setVerticalGroup(
             JPPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPPrincipalLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(JPPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnIngresarGastoFijo)
-                    .addComponent(btnIngresarCompra))
-                .addGap(18, 18, 18)
-                .addGroup(JPPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnIngresarProducto)
-                    .addComponent(btnIndicarUsoProducto))
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(JPLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(JPPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(JPPrincipalLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(JPPantallaPrinc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(JPPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPPrincipalLayout.createSequentialGroup()
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(JPRegistrarme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap()))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(108, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(JPInicioSesion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(JPPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(103, 103, 103))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
-                .addComponent(JPInicioSesion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(75, 75, 75)
-                .addComponent(JPPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(64, 64, 64))
-        );
+        getContentPane().add(JPPrincipal, "card2");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
-        // TODO add your handling code here:
-        try{
-            String alias = this.txtNombreUsuario.getText();
-
-            if (sistema.getListaAlias().contains(alias)) {
-                //oculto panel de login para mostrar las opciones
-                JPInicioSesion.setVisible(false);
-                JPPrincipal.setVisible(true);
-            }else{
-                this.lblInfo.setText("Nombre de usuario incorrecto, intenta con uno válido.");
-            }
-        }catch(Exception e){
-            this.lblInfo.setText(e.toString());
-        }
-    }//GEN-LAST:event_btnIniciarSesionActionPerformed
-
-    private void btnRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarseActionPerformed
-        // TODO add your handling code here:
-        AltaUsuario iAU = new AltaUsuario(sistema);
-        iAU.setLocationRelativeTo(null);
-        iAU.setVisible(true);
-       
-    }//GEN-LAST:event_btnRegistrarseActionPerformed
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         //Serializar todos los arraylist al cerrar la app
          sistema.guardar();
     }//GEN-LAST:event_formWindowClosing
 
-    private void btnIngresarGastoFijoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarGastoFijoActionPerformed
+    //Evento botón iniciar sesión en JPLogin
+    private void jButtonIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIniciarActionPerformed
         // TODO add your handling code here:
-        AltaGastoFijo iAGF = new AltaGastoFijo(sistema);
-        iAGF.setLocationRelativeTo(null);
-        iAGF.setVisible(true);
-    }//GEN-LAST:event_btnIngresarGastoFijoActionPerformed
+        try{
+            String alias = this.jTextFieldUsuarioAlias.getText();
+            
+            if (sistema.getListaAlias().contains(alias)) {
+                //remover panel
+                JPPrincipal.removeAll();
+                JPPrincipal.repaint();
+                JPPrincipal.revalidate();
+                //agregar panel
+                JPPrincipal.add(JPPantallaPrinc);
+                JPPrincipal.repaint();
+                JPPrincipal.revalidate();
+                
+            }else{                 
+                this.jLabelMsjError.setText("Nombre de usuario incorrecto, intenta con uno válido.");               
+            }
+        }catch(Exception e){
+            this.jLabelMsjError.setText(e.toString());
+        }
+    }//GEN-LAST:event_jButtonIniciarActionPerformed
 
+    //Evento botón registrarme en JPLogin
+    private void jButtonRegistrarmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarmeActionPerformed
+        // TODO add your handling code here:
+            //remover panel
+            JPPrincipal.removeAll();
+            JPPrincipal.repaint();
+            JPPrincipal.revalidate();
+            //agregar panel
+            JPPrincipal.add(JPRegistrarme);
+            JPPrincipal.repaint();
+            JPPrincipal.revalidate();
+    }//GEN-LAST:event_jButtonRegistrarmeActionPerformed
+
+    //Evento botón registrarme en JPRegistrarme
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        try {
+            String nombre = this.txtNombre.getText();
+            String alias = this.txtAlias.getText();
+            int edad;
+
+            Date fechaNac = this.dtpFechaNac.getDate();
+
+            Date hoy = Calendar.getInstance().getTime();
+
+            long diff = hoy.getTime() - fechaNac.getTime();
+            long d=(1000l*60*60*24*365);
+            long years = Math.round(diff / d);
+            edad = Math.toIntExact(years);
+
+            if (sistema.getListaAlias().contains(alias)) {
+                this.lblInfo.setText("El alias definido ya está en uso, elige otro por favor.");
+                limpiarCampos();
+            }else{
+                if (edad >= 18){
+                    alias = this.txtAlias.getText();
+                    Usuario usuario = new Usuario(nombre, alias, fechaNac, new ArrayList<Producto>(), new ArrayList<Compra>());
+                    sistema.agregarUsuario(usuario);
+                    //sistema.guardarUsuario();
+                    sistema.getListaAlias().add(alias);
+                    limpiarCampos();
+                    this.lblInfo.setText("Usuario ingresado con éxito.");
+                    //remover panel
+                    JPPrincipal.removeAll();
+                    JPPrincipal.repaint();
+                    JPPrincipal.revalidate();
+                    //agregar panel
+                    JPPrincipal.add(JPLogin);
+                    JPPrincipal.repaint();
+                    JPPrincipal.revalidate();
+                }else{
+                    this.lblInfo.setText("Debes ser mayor de 18 años para poder registrarte en el sistema.");
+                }
+            }
+
+        } catch (Exception e) {
+            this.lblInfo.setText("Error al ingresar Usuario.");// + e.getMessage());
+        }    
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    //Evento btnCancelar en JPRegistrarme
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+        //remover panel
+        JPPrincipal.removeAll();
+        JPPrincipal.repaint();
+        JPPrincipal.revalidate();
+        //agregar panel
+        JPPrincipal.add(JPLogin);
+        JPPrincipal.repaint();
+        JPPrincipal.revalidate();
+        this.lblInfo.setText("");
+        limpiarCampos();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    //limpiar campos en JPRegistrarme
+     public void limpiarCampos() {
+        this.txtNombre.setText("");
+        this.txtAlias.setText("");
+        dtpFechaNac.setCalendar(null);
+    }
    
     
     /**
@@ -259,16 +550,31 @@ public class PantallaInicial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel JPInicioSesion;
+    private javax.swing.JLabel JLabelMensajeBienvenida;
+    private javax.swing.JPanel JPLogin;
+    private javax.swing.JPanel JPMenu;
+    private javax.swing.JPanel JPPantallaPrinc;
     private javax.swing.JPanel JPPrincipal;
-    private javax.swing.JButton btnIndicarUsoProducto;
-    private javax.swing.JButton btnIngresarCompra;
-    private javax.swing.JButton btnIngresarGastoFijo;
-    private javax.swing.JButton btnIngresarProducto;
-    private javax.swing.JButton btnIniciarSesion;
-    private javax.swing.JButton btnRegistrarse;
+    private javax.swing.JPanel JPRegistrarme;
+    private javax.swing.JPanel JPVarios;
+    private javax.swing.JPanel JPVarios1;
+    private javax.swing.JPanel JPVarios2;
+    private javax.swing.JPanel JPVarios3;
+    private javax.swing.JButton btnCancelar;
+    private com.toedter.calendar.JDateChooser dtpFechaNac;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonIniciar;
+    private javax.swing.JButton jButtonRegistrarme;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabelBienvenida;
+    private javax.swing.JLabel jLabelMsjError;
+    private javax.swing.JLabel jLabelUsuario;
+    private javax.swing.JTextField jTextFieldUsuarioAlias;
+    private javax.swing.JLabel lblAlias;
+    private javax.swing.JLabel lblFechaNac;
     private javax.swing.JLabel lblInfo;
-    private javax.swing.JLabel lblNombreUsuario;
-    private javax.swing.JTextField txtNombreUsuario;
+    private javax.swing.JLabel lblNombre;
+    private javax.swing.JTextField txtAlias;
+    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }
