@@ -17,23 +17,7 @@ public class GastosDelHogar {
     
     
     public static void main(String[] args) {
-        //Sistema s;
-       
-        //PARA RECUPERAR
-//            try{
-//                FileInputStream fff = new FileInputStream("GastosDelHogar.ser");
-//                BufferedInputStream bbb = new BufferedInputStream(fff);
-//                ObjectInputStream sss = new ObjectInputStream(bbb);
-//                s =(Sistema)(sss.readObject()); 
-//                  s = new Sistema();
-//            }catch(Exception e){ 
-//                s = new Sistema();
-//            }        
-//            
-//            PantallaInicial iPI = new PantallaInicial(s);
-//            iPI.setVisible(true); 
-            
-            
+
             Sistema s;
             try
             {
@@ -52,9 +36,5 @@ public class GastosDelHogar {
             iPI.setVisible(true); 
             
     }
-    
-    
-    
-  
 
 }

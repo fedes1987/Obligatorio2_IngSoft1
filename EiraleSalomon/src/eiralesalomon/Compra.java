@@ -62,4 +62,34 @@ public class Compra implements Serializable {
         this.fechaCompra = unaFechaCompra;
     }
     
+    @Override
+    public boolean equals(Object o){
+        Producto prodA = this.getProducto();
+        Producto prodB = ((Compra)o).getProducto();
+        int precioProdA = this.getPrecioProd();
+        int precioProdB = ((Compra)o).getPrecioProd();
+        Date fechaCompraA = this.getFechaCompra();
+        Date fechaCompraB = ((Compra)o).getFechaCompra();
+        
+        Boolean prodEsIgual = this.miComparadorDeProducto(prodA, prodB);
+        
+        if(prodEsIgual == true && precioProdA == precioProdB && fechaCompraA == fechaCompraB){
+            return true;
+        }else{
+            return false;
+        }
+    }    
+    
+        
+    public boolean miComparadorDeProducto(Object obj1, Object obj2){
+        Producto prodA = ((Producto)obj1);
+        Producto prodB = ((Producto)obj2);
+        
+        if(prodA.getNombreProd().equals(prodB.getNombreProd()) && prodA.getStockAct() == prodB.getStockAct() && prodA.getStockMin() == prodB.getStockMin()){
+            return true;
+        }else{
+            return false;
+        }   
+    }
+    
 }
