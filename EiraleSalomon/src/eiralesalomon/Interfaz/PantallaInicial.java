@@ -65,7 +65,6 @@ public class PantallaInicial extends javax.swing.JFrame {
         JPVarios = new javax.swing.JPanel();
         JPVarios1 = new javax.swing.JPanel();
         JPVarios2 = new javax.swing.JPanel();
-        JPVarios3 = new javax.swing.JPanel();
         JPRegistrarme = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         lblAlias = new javax.swing.JLabel();
@@ -204,22 +203,11 @@ public class PantallaInicial extends javax.swing.JFrame {
             .addGap(0, 448, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout JPVarios3Layout = new javax.swing.GroupLayout(JPVarios3);
-        JPVarios3.setLayout(JPVarios3Layout);
-        JPVarios3Layout.setHorizontalGroup(
-            JPVarios3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        JPVarios3Layout.setVerticalGroup(
-            JPVarios3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 448, Short.MAX_VALUE)
-        );
-
         javax.swing.GroupLayout JPVariosLayout = new javax.swing.GroupLayout(JPVarios);
         JPVarios.setLayout(JPVariosLayout);
         JPVariosLayout.setHorizontalGroup(
             JPVariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 656, Short.MAX_VALUE)
             .addGroup(JPVariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(JPVariosLayout.createSequentialGroup()
                     .addContainerGap()
@@ -230,11 +218,6 @@ public class PantallaInicial extends javax.swing.JFrame {
                     .addGap(20, 20, 20)
                     .addComponent(JPVarios2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap()))
-            .addGroup(JPVariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(JPVariosLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(JPVarios3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGap(20, 20, 20)))
         );
         JPVariosLayout.setVerticalGroup(
             JPVariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,11 +232,6 @@ public class PantallaInicial extends javax.swing.JFrame {
                     .addGap(21, 21, 21)
                     .addComponent(JPVarios2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGap(1, 1, 1)))
-            .addGroup(JPVariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(JPVariosLayout.createSequentialGroup()
-                    .addGap(31, 31, 31)
-                    .addComponent(JPVarios3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
         );
 
         javax.swing.GroupLayout JPPantallaPrincLayout = new javax.swing.GroupLayout(JPPantallaPrinc);
@@ -559,7 +537,6 @@ public class PantallaInicial extends javax.swing.JFrame {
     private javax.swing.JPanel JPVarios;
     private javax.swing.JPanel JPVarios1;
     private javax.swing.JPanel JPVarios2;
-    private javax.swing.JPanel JPVarios3;
     private javax.swing.JButton btnCancelar;
     private com.toedter.calendar.JDateChooser dtpFechaNac;
     private javax.swing.JButton jButton1;

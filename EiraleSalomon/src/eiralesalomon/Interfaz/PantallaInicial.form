@@ -261,7 +261,7 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="656" max="32767" attributes="0"/>
                       <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
@@ -274,13 +274,6 @@
                               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                               <Component id="JPVarios2" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="103" rootIndex="3" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="JPVarios3" max="32767" attributes="0"/>
-                              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -300,13 +293,6 @@
                               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                               <Component id="JPVarios2" max="32767" attributes="0"/>
                               <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="103" rootIndex="3" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                              <Component id="JPVarios3" max="32767" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -329,21 +315,6 @@
                   </Layout>
                 </Container>
                 <Container class="javax.swing.JPanel" name="JPVarios2">
-
-                  <Layout>
-                    <DimensionLayout dim="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                    </DimensionLayout>
-                    <DimensionLayout dim="1">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <EmptySpace min="0" pref="448" max="32767" attributes="0"/>
-                      </Group>
-                    </DimensionLayout>
-                  </Layout>
-                </Container>
-                <Container class="javax.swing.JPanel" name="JPVarios3">
 
                   <Layout>
                     <DimensionLayout dim="0">
