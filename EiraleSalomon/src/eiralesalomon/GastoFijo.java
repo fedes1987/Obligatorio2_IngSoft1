@@ -18,20 +18,20 @@ public class GastoFijo implements Serializable {
     //atributos
     private String nombre;
     private int precio;
-    private Date fechaVenc;
+    private int diaVenc;
     
     //Constructor
-    public GastoFijo(String unNombre, int unPrecio, Date unaFechaVenc){
+    public GastoFijo(String unNombre, int unPrecio, int unDiaVenc){
         this.nombre = unNombre;
         this.precio = unPrecio;
-        this.fechaVenc = unaFechaVenc;
+        this.diaVenc = unDiaVenc;
     }
     
     //Constructor vacío
     public GastoFijo(){
         this.setNombre("");
         this.setPrecio(0);
-        this.setFechaVenc(null);
+        this.setDiaVenc(0);
     }
     
     //GETs & SETs
@@ -43,8 +43,8 @@ public class GastoFijo implements Serializable {
         return precio;
     }
     
-    public Date getFechaVenc() {
-        return fechaVenc;
+    public int getDiaVenc() {
+        return diaVenc;
     }
     
     public void setNombre(String unNombre) {
@@ -55,8 +55,8 @@ public class GastoFijo implements Serializable {
         this.precio = unPrecio;
     }
     
-    public void setFechaVenc(Date unaFechaVenc) {
-        this.fechaVenc = unaFechaVenc;
+    public void setDiaVenc(int unDiaVenc) {
+        this.diaVenc = unDiaVenc;
     }
     
     @Override
@@ -65,10 +65,10 @@ public class GastoFijo implements Serializable {
         String nombreGF2 = ((GastoFijo)o).getNombre();
         int importeGF1 = this.getPrecio();
         int importeGF2 = ((GastoFijo)o).getPrecio();
-        Date fechaGF1 = this.getFechaVenc();
-        Date fechaGF2 = ((GastoFijo)o).getFechaVenc();
+        int diaVencGF1 = this.getDiaVenc();
+        int diaVencGF2 = ((GastoFijo)o).getDiaVenc();
         
-        return (nombreGF1.equals(nombreGF2) && importeGF1 == importeGF2) && fechaGF1 == fechaGF2;
+        return (nombreGF1.equals(nombreGF2) && importeGF1 == importeGF2) && diaVencGF1 == diaVencGF2;
     }    
     
 }

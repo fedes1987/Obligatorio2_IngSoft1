@@ -10,7 +10,6 @@ import java.util.Date;
 import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Iterator;
 
@@ -24,17 +23,19 @@ public class Usuario implements Serializable{
     private Date FechaNac;
     private ArrayList<Producto> listaProd;
     private ArrayList<Compra> listaCompras;
-            
-    Sistema s;
+    private ArrayList<GastoFijo> listaGastosFijos;
     
     //Constructor
     public Usuario(String pNombre, String pAlias, Date pFechaNac, 
-            ArrayList<Producto> unaListaProd, ArrayList<Compra> unaListaCompra ){
-        this.Nombre = pNombre;
-        this.Alias = pAlias;
-        this.FechaNac = pFechaNac;
-        this.listaProd = unaListaProd;
-        this.listaCompras = unaListaCompra;
+            ArrayList<Producto> unaListaProd, ArrayList<Compra> unaListaCompra,
+            ArrayList<GastoFijo> unaListaGastos){
+        //this.Id = pId;
+        this.setNombre(pNombre);
+        this.setAlias(pAlias);
+        this.setFechaNac(pFechaNac);
+        this.setListaProd(unaListaProd);
+        this.setListaCompra(unaListaCompra);
+        this.setListaGastos(unaListaGastos);
     }
     
     //Constructor vacío
@@ -44,6 +45,7 @@ public class Usuario implements Serializable{
         this.setFechaNac(null);
         this.setListaProd(new ArrayList<Producto>());
         this.setListaCompra(new ArrayList<Compra>());
+        this.setListaGastos(new ArrayList<GastoFijo>());
     }
     
     //GETs & SETs
@@ -66,6 +68,10 @@ public class Usuario implements Serializable{
     public ArrayList<Compra> getListaCompra(){
         return listaCompras;
     }
+    
+    public ArrayList<GastoFijo> getListaGastos(){
+        return listaGastosFijos;
+    }
 
     public void setNombre(String Nombre) {
         this.Nombre = Nombre;
@@ -87,6 +93,10 @@ public class Usuario implements Serializable{
         this.listaCompras = unaListaCompra;
     }
     
+    public void setListaGastos(ArrayList<GastoFijo> unaListaGastos){
+        this.listaGastosFijos = unaListaGastos;
+    }
+    
     //Add Listas
     public void agregarProd(Producto unProducto){
         this.listaProd.add(unProducto);
@@ -96,9 +106,12 @@ public class Usuario implements Serializable{
         this.listaCompras.add(unCompra);
     }
     
-    //pasar por parm en base a lo cargado en el filechooser
-    public void cargarProdsDeLista() {
-	String csvFile = "ListaProductos.csv";
+    public void agregarGasto(GastoFijo unGasto){
+        this.listaGastosFijos.add(unGasto);
+    }
+    
+    public void cargarProdsDeLista(String path) {
+	String csvFile = path;// + "ListaProductos.csv";
 	BufferedReader br = null;
 	String line;
 	String csvSplitBy = ",";

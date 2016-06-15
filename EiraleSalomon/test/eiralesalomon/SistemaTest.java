@@ -72,12 +72,12 @@ public class SistemaTest {
         assertEquals(true, existeAlias);
     }
     
-    //FedeS - cómo hacer cuando querés probar el caso que se espera y el que debería dar error?
-    //@Test (expected = IllegalArgumentException.class)
+ 
     @Test
     public void testConstructorConParms() {
         ArrayList<Usuario> listaUsuarios = new ArrayList();
         ArrayList<String> listaAlias = new ArrayList();
+        String unUsuarioActivo = "testUser";
         
         Usuario usuario = new Usuario();
         listaUsuarios.add(usuario);
@@ -87,8 +87,9 @@ public class SistemaTest {
         Sistema sistema = new Sistema();
         sistema.setListaAlias(listaAlias);
         sistema.setListaUsuarios(listaUsuarios);
+        sistema.setUsuarioActivo(unUsuarioActivo);
         
-        Sistema sistemaClase = new Sistema(listaUsuarios, listaAlias);
+        Sistema sistemaClase = new Sistema(listaUsuarios, listaAlias, unUsuarioActivo);
         
         assertEquals(sistema, sistemaClase);
     }
@@ -98,10 +99,12 @@ public class SistemaTest {
     public void testConstructorConParmsQueFalla() {
         ArrayList<Usuario> listaUsuarios = new ArrayList();
         ArrayList<String> listaAlias = new ArrayList();
+        String usuarioActivo = "testUser";
         
         Sistema sistema = new Sistema();
         sistema.setListaAlias(listaAlias);
         sistema.setListaUsuarios(listaUsuarios);
+        sistema.setUsuarioActivo(usuarioActivo);
         
         //Agrego otro ArrayList de distinto largo para que falle el método comparador
         ArrayList<String> listaAliasDiff = new ArrayList();
@@ -111,7 +114,7 @@ public class SistemaTest {
         Usuario usuario = new Usuario();
         listaUsuariosDiff.add(usuario);
         
-        Sistema sistemaClase = new Sistema(listaUsuariosDiff, listaAliasDiff);
+        Sistema sistemaClase = new Sistema(listaUsuariosDiff, listaAliasDiff, usuarioActivo);
         
         assertEquals(sistema, sistemaClase);
     }

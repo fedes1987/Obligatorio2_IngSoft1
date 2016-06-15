@@ -17,14 +17,19 @@ import java.util.Iterator;
 public class Sistema implements Serializable{
 
     private ArrayList<Usuario> listaUsuarios;
-    private ArrayList<String> listaAlias; 
-    
+    private ArrayList<String> listaAlias;
+    private String usuarioActivo;
+
     public void setListaUsuarios(ArrayList<Usuario> listaUsuarios) {
         this.listaUsuarios = listaUsuarios;
     }
 
     public void setListaAlias(ArrayList<String> listaAlias) {
         this.listaAlias = listaAlias;
+    }
+    
+    public void setUsuarioActivo(String unUsuarioActivo){
+        this.usuarioActivo = unUsuarioActivo;
     }
 
     public ArrayList<Usuario> getListaUsuarios() {
@@ -35,11 +40,8 @@ public class Sistema implements Serializable{
         return listaAlias;
     }
     
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    public String getUsuarioActivo(){
+        return usuarioActivo;
     }
     
      //métodos
@@ -56,13 +58,28 @@ public class Sistema implements Serializable{
     public Sistema(){
         this.setListaUsuarios(new ArrayList<Usuario>());
         this.setListaAlias(new ArrayList<String>());
+        this.setUsuarioActivo("");
        
     }
     
     //Constructor con parms
-    public Sistema(ArrayList<Usuario> listaUsuarios,ArrayList<String> listaAlias){
+    public Sistema(ArrayList<Usuario> listaUsuarios,ArrayList<String> listaAlias, String unUsuarioActivo){
         this.setListaUsuarios(listaUsuarios);
         this.setListaAlias(listaAlias);
+        this.setUsuarioActivo(unUsuarioActivo);
+    }
+    
+    public int ObtenerUsuario(String unAlias){
+        Iterator <Usuario> it = this.getListaUsuarios().iterator();
+        int pos = 0;
+            while (it.hasNext()){
+                Usuario unUsuario = it.next();
+                if( unUsuario.getAlias().equals(unAlias)){
+                    pos = this.getListaUsuarios().indexOf(unUsuario);
+                    break;
+                }
+            }
+        return pos;
     }
     
     //Pasar nombre de archivo como parámetro para poder probar el catch cuando se pasa un archivo inválido

@@ -18,7 +18,6 @@ public class Compra implements Serializable {
     //atributos
     private Producto producto;
     private int precioProd;
-    //private int cantProd;
     private Date fechaCompra;
     
     //Constructor

@@ -29,6 +29,7 @@ public class UsuarioTest {
         Date fechaNacUsu = Date.valueOf(LocalDate.MAX);
         ArrayList<Producto> listaProd = new ArrayList();
         ArrayList<Compra> listaCompra = new ArrayList();
+        ArrayList<GastoFijo> listaGastoFijo = new ArrayList();
         
         Producto prod = new Producto();
         prod.setNombreProd("testProd");
@@ -41,6 +42,12 @@ public class UsuarioTest {
         compra.setFechaCompra(fechaNacUsu);
         compra.setPrecioProd(100);
         listaCompra.add(compra);
+        
+        GastoFijo gf = new GastoFijo();
+        gf.setNombre("UTE");
+        gf.setPrecio(1200);
+        gf.setDiaVenc(12);
+        listaGastoFijo.add(gf);
 
         //Crear un usuario local para luego compararlo con el creado en el constructor de la clase
         Usuario usu = new Usuario();
@@ -49,9 +56,10 @@ public class UsuarioTest {
         usu.setFechaNac(fechaNacUsu);
         usu.setListaProd(listaProd);
         usu.setListaCompra(listaCompra);
+        usu.setListaGastos(listaGastoFijo);
         
         //Usuario creado con constructor de clase con parámetros
-        Usuario usuClase = new Usuario(nombreUsu, aliasUsu, fechaNacUsu, listaProd, listaCompra);
+        Usuario usuClase = new Usuario(nombreUsu, aliasUsu, fechaNacUsu, listaProd, listaCompra, listaGastoFijo);
         
         assertEquals(true, miComparadorDeObjetos(usu, usuClase));
     }
@@ -65,6 +73,7 @@ public class UsuarioTest {
         Date fechaNacUsu = Date.valueOf(LocalDate.MAX);
         ArrayList<Producto> listaProd = new ArrayList();
         ArrayList<Compra> listaCompra = new ArrayList();
+        ArrayList<GastoFijo> listaGastoFijo = new ArrayList();
         
         Producto prod = new Producto();
         prod.setNombreProd("testProd");
@@ -115,9 +124,10 @@ public class UsuarioTest {
         usu.setFechaNac(fechaNacUsu);
         usu.setListaProd(listaProdDiff);
         usu.setListaCompra(listaCompraDiff);
+        usu.setListaGastos(listaGastoFijo);
         
         //Usuario creado con constructor de clase con parámetros
-        Usuario usuClase = new Usuario(nombreUsu, aliasUsu, fechaNacUsu, listaProd, listaCompra);
+        Usuario usuClase = new Usuario(nombreUsu, aliasUsu, fechaNacUsu, listaProd, listaCompra, listaGastoFijo);
         
         assertEquals(true, miComparadorDeObjetos(usu, usuClase));
     }
@@ -134,8 +144,10 @@ public class UsuarioTest {
         //Creo dos arrays de cada uno para que sus elementos sean diferentes y así dar error en el equals de Usuario
         ArrayList<Producto> listaProd = new ArrayList();
         ArrayList<Compra> listaCompra = new ArrayList();
+        ArrayList<GastoFijo> listaGF = new ArrayList();
         ArrayList<Producto> listaProd2 = new ArrayList();
         ArrayList<Compra> listaCompra2 = new ArrayList();
+         ArrayList<GastoFijo> listaGF2 = new ArrayList();
         
         //Crear un usuario local para luego compararlo con el creado en el constructor de la clase
         Usuario usu = new Usuario();
@@ -168,6 +180,7 @@ public class UsuarioTest {
         listaCompra.add(compra1);
         
         usu.setListaCompra(listaCompra);
+        usu.setListaGastos(listaGF);
         
         Compra compra2 = new Compra();
         compra2.setFechaCompra(fechaNacUsu);
@@ -176,7 +189,7 @@ public class UsuarioTest {
         listaCompra2.add(compra2);
         
         //Usuario creado con constructor de clase con parámetros
-        Usuario usuClase = new Usuario(nombreUsu, aliasUsu, fechaNacUsu, listaProd2, listaCompra2);
+        Usuario usuClase = new Usuario(nombreUsu, aliasUsu, fechaNacUsu, listaProd2, listaCompra2, listaGF2);
         
         assertEquals(true, miComparadorDeObjetos(usu, usuClase));
     }
@@ -203,7 +216,7 @@ public class UsuarioTest {
         listaProd.add(prod3);
         
         Usuario user = new Usuario();
-        user.cargarProdsDeLista();
+       // user.CargarProdsDeLista();
        
         ArrayList<Producto> arrayEsperado = user.getListaProd();
         
