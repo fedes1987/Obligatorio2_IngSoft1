@@ -24,18 +24,19 @@ public class Usuario implements Serializable{
     private Date FechaNac;
     private ArrayList<Producto> listaProd;
     private ArrayList<Compra> listaCompras;
-            
-    Sistema s;
+    private ArrayList<GastoFijo> listaGastosFijos;
     
     //Constructor
     public Usuario(String pNombre, String pAlias, Date pFechaNac, 
-            ArrayList<Producto> unaListaProd, ArrayList<Compra> unaListaCompra ){
+            ArrayList<Producto> unaListaProd, ArrayList<Compra> unaListaCompra,
+            ArrayList<GastoFijo> unaListaGastos){
         //this.Id = pId;
-        this.Nombre = pNombre;
-        this.Alias = pAlias;
-        this.FechaNac = pFechaNac;
-        this.listaProd = unaListaProd;
-        this.listaCompras = unaListaCompra;
+        this.setNombre(pNombre);
+        this.setAlias(pAlias);
+        this.setFechaNac(pFechaNac);
+        this.setListaProd(unaListaProd);
+        this.setListaCompra(unaListaCompra);
+        this.setListaGastos(unaListaGastos);
     }
     
     //Constructor vacío
@@ -45,6 +46,7 @@ public class Usuario implements Serializable{
         this.setFechaNac(null);
         this.setListaProd(new ArrayList<Producto>());
         this.setListaCompra(new ArrayList<Compra>());
+        this.setListaGastos(new ArrayList<GastoFijo>());
     }
     
     //GETs & SETs
@@ -72,6 +74,10 @@ public class Usuario implements Serializable{
         return listaCompras;
     }
     
+    public ArrayList<GastoFijo> getListaGastos(){
+        return listaGastosFijos;
+    }
+    
     public void setId(int Id) {
         this.Id = Id;
     }
@@ -96,6 +102,10 @@ public class Usuario implements Serializable{
         this.listaCompras = unaListaCompra;
     }
     
+    public void setListaGastos(ArrayList<GastoFijo> unaListaGastos){
+        this.listaGastosFijos = unaListaGastos;
+    }
+    
     //Add Listas
     public void agregarProd(Producto unProducto){
         this.listaProd.add(unProducto);
@@ -105,8 +115,12 @@ public class Usuario implements Serializable{
         this.listaCompras.add(unCompra);
     }
     
-    public void CargarProdsDeLista() {
-	String csvFile = "ListaProductos.csv";
+    public void agregarGasto(GastoFijo unGasto){
+        this.listaGastosFijos.add(unGasto);
+    }
+    
+    public void CargarProdsDeLista(String path) {
+	String csvFile = path;// + "ListaProductos.csv";
 	BufferedReader br = null;
 	String line = "";
 	String csvSplitBy = ",";

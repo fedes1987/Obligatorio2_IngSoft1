@@ -40,7 +40,7 @@ public class UsuarioTest {
         listaProd.add(prod3);
         
         Usuario user = new Usuario();
-        user.CargarProdsDeLista();
+       // user.CargarProdsDeLista();
        
         ArrayList<Producto> arrayEsperado = user.getListaProd();
         

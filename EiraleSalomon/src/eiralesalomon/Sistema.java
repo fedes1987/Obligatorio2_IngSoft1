@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+import java.util.Iterator;
 /**
  *
  * @author fsalomon
@@ -66,6 +67,19 @@ public class Sistema implements Serializable{
         this.setListaUsuarios(listaUsuarios);
         this.setListaAlias(listaAlias);
         this.setUsuarioActivo(unUsuarioActivo);
+    }
+    
+    public int ObtenerUsuario(String unAlias){
+        Iterator <Usuario> it = this.getListaUsuarios().iterator();
+        int pos = 0;
+            while (it.hasNext()){
+                Usuario unUsuario = it.next();
+                if( unUsuario.getAlias().equals(unAlias)){
+                    pos = this.getListaUsuarios().indexOf(unUsuario);
+                    break;
+                }
+            }
+        return pos;
     }
     
      public boolean guardar(){
