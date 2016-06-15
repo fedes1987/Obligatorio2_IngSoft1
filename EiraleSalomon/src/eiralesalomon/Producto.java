@@ -6,7 +6,6 @@
 package eiralesalomon;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  *
@@ -64,9 +63,8 @@ public class Producto implements Serializable {
     }
     
     public void quitaStock(){
-        if(this.stockAct >0){
+        if(this.stockAct >0)
             this.stockAct--;
-        }
     }
     
     public boolean alarmaStock(){
@@ -80,11 +78,7 @@ public class Producto implements Serializable {
         int stockMinProdA = this.getStockMin();
         int stockMinProdB = ((Producto)o).getStockMin();
         
-        if(nombreProdA.equals(nombreProdB) && stockMinProdA == stockMinProdB){
-            return true;
-        }else{
-            return false;
-        }
+        return nombreProdA.equals(nombreProdB) && stockMinProdA == stockMinProdB;
     }    
     
 }

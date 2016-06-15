@@ -5,8 +5,6 @@
  */
 package eiralesalomon;
 
-import java.util.HashSet;
-import java.util.Set;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -56,5 +54,22 @@ public class ProductoTest {
         
         Boolean alarma = prod.alarmaStock();
         assertEquals(true, alarma);
+    }
+    
+    @Test
+    public void testConstructorConParms() {
+        String nombreProd = "testProduct";
+        int stockMinProd = 1;
+        int stockActProd = 3;
+        
+        //Crear un producto local para luego compararlo con el creado en el constructor de la clase
+        Producto prod = new Producto();
+        prod.setNombreProd(nombreProd);
+        prod.setStockAct(stockActProd);
+        prod.setStockMin(stockMinProd);
+        
+        //Producto creado con constructor de clase con parámetros
+        Producto prodClase = new Producto(nombreProd, stockMinProd, stockActProd);
+        assertEquals(prod, prodClase);
     }
 }

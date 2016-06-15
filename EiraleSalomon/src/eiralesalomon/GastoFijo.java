@@ -59,4 +59,16 @@ public class GastoFijo implements Serializable {
         this.fechaVenc = unaFechaVenc;
     }
     
+    @Override
+    public boolean equals(Object o){
+        String nombreGF1 = this.getNombre();
+        String nombreGF2 = ((GastoFijo)o).getNombre();
+        int importeGF1 = this.getPrecio();
+        int importeGF2 = ((GastoFijo)o).getPrecio();
+        Date fechaGF1 = this.getFechaVenc();
+        Date fechaGF2 = ((GastoFijo)o).getFechaVenc();
+        
+        return (nombreGF1.equals(nombreGF2) && importeGF1 == importeGF2) && fechaGF1 == fechaGF2;
+    }    
+    
 }

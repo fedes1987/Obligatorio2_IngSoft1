@@ -92,14 +92,15 @@ public class Usuario implements Serializable{
         this.listaProd.add(unProducto);
     }
     
-    public void agregarPartida(Compra unCompra){
+    public void agregarCompra(Compra unCompra){
         this.listaCompras.add(unCompra);
     }
     
-    public void CargarProdsDeLista() {
+    //pasar por parm en base a lo cargado en el filechooser
+    public void cargarProdsDeLista() {
 	String csvFile = "ListaProductos.csv";
 	BufferedReader br = null;
-	String line = "";
+	String line;
 	String csvSplitBy = ",";
         ArrayList<Producto> productosDeArchivo = new ArrayList();
          
@@ -118,21 +119,11 @@ public class Usuario implements Serializable{
 
                 productosDeArchivo.add(prod);
             }
-	} catch (FileNotFoundException e) {
-            e.printStackTrace();
-	} catch (IOException e) {
-            e.printStackTrace();
-	} finally {
             //cuando termina de iterar se setea el Arraylist del usuario con los valores leídos del archivo
             this.setListaProd(productosDeArchivo);
-            if (br != null) {
-                try {
-                        br.close();
-                } catch (IOException e) {
-                        e.printStackTrace();
-                }
-            }
-	}
+	}catch (IOException e) {
+            e.printStackTrace();
+	} 
     }
     
     @Override

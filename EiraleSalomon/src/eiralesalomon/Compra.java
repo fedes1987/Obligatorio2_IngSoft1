@@ -5,7 +5,6 @@
  */
 package eiralesalomon;
 
-import java.util.ArrayList;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -73,11 +72,7 @@ public class Compra implements Serializable {
         
         Boolean prodEsIgual = this.miComparadorDeProducto(prodA, prodB);
         
-        if(prodEsIgual == true && precioProdA == precioProdB && fechaCompraA == fechaCompraB){
-            return true;
-        }else{
-            return false;
-        }
+        return prodEsIgual == true && precioProdA == precioProdB && fechaCompraA == fechaCompraB;
     }    
     
         
@@ -85,11 +80,7 @@ public class Compra implements Serializable {
         Producto prodA = ((Producto)obj1);
         Producto prodB = ((Producto)obj2);
         
-        if(prodA.getNombreProd().equals(prodB.getNombreProd()) && prodA.getStockAct() == prodB.getStockAct() && prodA.getStockMin() == prodB.getStockMin()){
-            return true;
-        }else{
-            return false;
-        }   
+        return prodA.getNombreProd().equals(prodB.getNombreProd()) && prodA.getStockAct() == prodB.getStockAct() && prodA.getStockMin() == prodB.getStockMin();   
     }
     
 }
