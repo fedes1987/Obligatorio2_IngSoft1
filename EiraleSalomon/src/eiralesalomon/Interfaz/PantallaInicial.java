@@ -15,6 +15,8 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.File;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
@@ -32,7 +34,7 @@ public class PantallaInicial extends javax.swing.JFrame {
      * Creates new form PantallaInicial
      * @param sistema
      */
-    public PantallaInicial(Sistema sistema) {
+    public PantallaInicial(Sistema sistema) throws ParseException {
         initComponents();
         this.sistema = sistema;
         JPPrincipal.setVisible(true);
@@ -485,12 +487,10 @@ public class PantallaInicial extends javax.swing.JFrame {
                     .addGroup(jPanelProductosLayout.createSequentialGroup()
                         .addGap(39, 39, 39)
                         .addComponent(jLabelErrorProd, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
+                .addGap(61, 61, 61)
                 .addGroup(jPanelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLErrorUsoProd, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanelProductosLayout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
+                    .addComponent(jLErrorUsoProd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(31, 31, 31))
             .addGroup(jPanelProductosLayout.createSequentialGroup()
                 .addGroup(jPanelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -514,9 +514,9 @@ public class PantallaInicial extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelProductosLayout.createSequentialGroup()
-                        .addComponent(jLErrorUsoProd)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLErrorUsoProd, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(11, 11, 11)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE))
                     .addGroup(jPanelProductosLayout.createSequentialGroup()
                         .addComponent(jLabelErrorProd)
                         .addGap(13, 13, 13)
@@ -527,7 +527,7 @@ public class PantallaInicial extends javax.swing.JFrame {
                         .addGroup(jPanelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLStockMin)
                             .addComponent(jTextStockMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanelProductosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jBIngresarProd)
                     .addComponent(jBUso))
@@ -735,7 +735,7 @@ public class PantallaInicial extends javax.swing.JFrame {
             JPPantallaPrincLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(JPPantallaPrincLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(JPMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 117, Short.MAX_VALUE)
+                .addComponent(JPMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 117, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(JPVarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
@@ -1034,7 +1034,7 @@ public class PantallaInicial extends javax.swing.JFrame {
         if(!sistema.getListaUsuarios().get(pos).getListaGastos().isEmpty()){
             Iterator<GastoFijo> it = sistema.getListaUsuarios().get(pos).getListaGastos().iterator();
             while(it.hasNext()){
-                modeloGastos.addElement(it.next().getNombre());
+                modeloGastos.addElement(it.next());
             }
         }
     }//GEN-LAST:event_jButtonGastosFijosActionPerformed
@@ -1054,11 +1054,16 @@ public class PantallaInicial extends javax.swing.JFrame {
         if(!sistema.getListaUsuarios().get(pos).getListaProd().isEmpty()){
             Iterator<Producto> it = sistema.getListaUsuarios().get(pos).getListaProd().iterator();
             while(it.hasNext()){
-                modeloProd.addElement(it.next().getNombreProd());
+                modeloProd.addElement(it.next());
             }
         }
         jLabelErrorProd.setText("");
         jLErrorUsoProd.setText("");
+        if(sistema.getListaUsuarios().get(pos).ejecutoAlarma()){
+            AlarmaStock frameAlarma = new AlarmaStock(sistema);
+            frameAlarma.setLocationRelativeTo(this);
+            frameAlarma.setVisible(true);
+        }
     }//GEN-LAST:event_jButtonProductosActionPerformed
 
     private void jButtonCarritoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCarritoActionPerformed
@@ -1072,6 +1077,8 @@ public class PantallaInicial extends javax.swing.JFrame {
         JPVarios.repaint();
         JPVarios.revalidate();
         jLabelErrorCompras.setText("");
+        jTextPrecioCompra.setText("");
+        jDateFechaCompra.setDate(null);
         int pos = sistema.ObtenerUsuario(sistema.getUsuarioActivo());
         modeloComp.clear();
         if(!sistema.getListaUsuarios().get(pos).getListaProd().isEmpty()){
@@ -1097,14 +1104,27 @@ public class PantallaInicial extends javax.swing.JFrame {
         if(!sistema.getListaUsuarios().get(pos).getListaProd().isEmpty()){
             Iterator<Producto> it = sistema.getListaUsuarios().get(pos).getListaProd().iterator();
             while(it.hasNext()){
-                modeloRepProd .addElement(it.next().getNombreProd());
+                modeloRepProd .addElement(it.next());
             }
         }
         modeloRepGastos .clear();
         if(!sistema.getListaUsuarios().get(pos).getListaGastos().isEmpty()){
             Iterator<GastoFijo> it = sistema.getListaUsuarios().get(pos).getListaGastos().iterator();
             while(it.hasNext()){
-                modeloRepGastos .addElement(it.next().getNombre());
+                modeloRepGastos .addElement(it.next());
+            }
+        }
+        if(!sistema.getListaUsuarios().get(pos).getListaCompra().isEmpty()){
+            Iterator<Compra> it = sistema.getListaUsuarios().get(pos).getListaCompra().iterator();
+            while(it.hasNext()){
+               // Calendar cal1 = Calendar.getInstance();
+                //Calendar cal2 = Calendar.getInstance();
+                //cal1.setTime(it.next().getFechaCompra());
+               // System.out.println(cal1);
+                //cal2.setTime(this);
+             //   if (cal1.get(Calendar.MONTH) == cal2.get(Calendar.MONTH)){
+                    modeloRepGastos .addElement(it.next());
+               // }
             }
         }
     }//GEN-LAST:event_jButtonReportesActionPerformed
@@ -1129,7 +1149,7 @@ public class PantallaInicial extends javax.swing.JFrame {
                 jLabelErrorProd.setForeground(Color.green);
                 jTextNomProd.setText("");
                 jTextStockMin.setText("");
-                modeloProd.addElement(unProd.getNombreProd());
+                modeloProd.addElement(unProd);
             }else{
                 jLabelErrorProd.setText("Stock mínimo debe ser un número positivo");
                 jLabelErrorProd.setForeground(Color.red);
@@ -1145,6 +1165,11 @@ public class PantallaInicial extends javax.swing.JFrame {
            sistema.getListaUsuarios().get(pos).getListaProd().get(jListProdUso.getSelectedIndex()).quitaStock();
            jLErrorUsoProd.setText("Se ha descontado un item del stock del producto");
            jLErrorUsoProd.setForeground(Color.green);
+           if(sistema.getListaUsuarios().get(pos).ejecutoAlarma()){
+                AlarmaStock frameAlarma = new AlarmaStock(sistema);
+                frameAlarma.setLocationRelativeTo(this);
+                frameAlarma.setVisible(true);
+            }
                      
        }else{
         jLErrorUsoProd.setText("Debe seleccionar un producto");   
@@ -1165,14 +1190,18 @@ public class PantallaInicial extends javax.swing.JFrame {
                   jLabelErrorCompras.setText("Debe ingresar la fecha de la compra"); 
                   jLabelErrorCompras.setForeground(Color.red);
                   }else{
-                     int pos = sistema.ObtenerUsuario(sistema.getUsuarioActivo());
+                    int pos = sistema.ObtenerUsuario(sistema.getUsuarioActivo());
                     Producto unProducto = sistema.getListaUsuarios().get(pos).getListaProd().get(jLCompraProd.getSelectedIndex());
                     int precioCompra = Integer.parseInt(jTextPrecioCompra.getText());
                     Date fechaCompra = jDateFechaCompra.getDate();
                     Compra unaCompra = new Compra(unProducto, precioCompra, fechaCompra);
                     sistema.getListaUsuarios().get(pos).getListaCompra().add(unaCompra);
+                    int pos2 = sistema.getListaUsuarios().get(pos).ObtenerProducto(unProducto.getNombreProd());
+                    sistema.getListaUsuarios().get(pos).getListaProd().get(pos2).incrementaStock();
                     jLabelErrorCompras.setText("Se ha ingresado la compra correctamente");
                     jLabelErrorCompras.setForeground(Color.green);
+                    jTextPrecioCompra.setText("");
+                    jDateFechaCompra.setDate(null);
                     }
     }//GEN-LAST:event_jBIngresarCompraActionPerformed
 
@@ -1210,7 +1239,7 @@ public class PantallaInicial extends javax.swing.JFrame {
             jTextNombre.setText("");
             jTextCosto.setText("");
             jTextDiaVenc.setText("");
-            modeloGastos.addElement(unGasto.getNombre());
+            modeloGastos.addElement(unGasto);
         }
 
     }//GEN-LAST:event_jBIngresarGastoActionPerformed
@@ -1222,7 +1251,7 @@ public class PantallaInicial extends javax.swing.JFrame {
         File f = chooser.getSelectedFile();
         String fileName = f.getAbsolutePath();
         int pos = sistema.ObtenerUsuario(sistema.getUsuarioActivo());
-        sistema.getListaUsuarios().get(pos).CargarProdsDeLista(fileName);
+        sistema.getListaUsuarios().get(pos).cargarProdsDeLista(fileName);
         //remover panel
         JPVarios.removeAll();
         JPVarios.repaint();
@@ -1236,7 +1265,7 @@ public class PantallaInicial extends javax.swing.JFrame {
         if(!sistema.getListaUsuarios().get(pos).getListaProd().isEmpty()){
             Iterator<Producto> it = sistema.getListaUsuarios().get(pos).getListaProd().iterator();
             while(it.hasNext()){
-                modeloProd.addElement(it.next().getNombreProd());
+                modeloProd.addElement(it.next());
             }
         }
         jLabelErrorProd.setText("");

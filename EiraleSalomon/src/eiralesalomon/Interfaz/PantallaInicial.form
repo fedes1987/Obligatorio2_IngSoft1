@@ -640,13 +640,10 @@
                                       <Component id="jLabelErrorProd" min="-2" pref="267" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="95" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLErrorUsoProd" min="-2" pref="218" max="-2" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                                      <Component id="jScrollPane1" min="-2" pref="153" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="jScrollPane1" pref="272" max="32767" attributes="0"/>
+                                  <Component id="jLErrorUsoProd" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                           </Group>
@@ -678,9 +675,9 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
-                                      <Component id="jLErrorUsoProd" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="jScrollPane1" min="-2" pref="62" max="-2" attributes="0"/>
+                                      <Component id="jLErrorUsoProd" min="-2" pref="0" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                                      <Component id="jScrollPane1" pref="62" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <Component id="jLabelErrorProd" min="-2" max="-2" attributes="0"/>
@@ -696,7 +693,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="29" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jBIngresarProd" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jBUso" alignment="3" min="-2" max="-2" attributes="0"/>

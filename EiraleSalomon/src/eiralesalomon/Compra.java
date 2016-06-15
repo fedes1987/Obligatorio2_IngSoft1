@@ -5,7 +5,6 @@
  */
 package eiralesalomon;
 
-import java.util.ArrayList;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -59,6 +58,33 @@ public class Compra implements Serializable {
     
     public void setFechaCompra(Date unaFechaCompra){
         this.fechaCompra = unaFechaCompra;
+    }
+    
+    @Override
+    public boolean equals(Object o){
+        Producto prodA = this.getProducto();
+        Producto prodB = ((Compra)o).getProducto();
+        int precioProdA = this.getPrecioProd();
+        int precioProdB = ((Compra)o).getPrecioProd();
+        Date fechaCompraA = this.getFechaCompra();
+        Date fechaCompraB = ((Compra)o).getFechaCompra();
+        
+        Boolean prodEsIgual = this.miComparadorDeProducto(prodA, prodB);
+        
+        return prodEsIgual == true && precioProdA == precioProdB && fechaCompraA == fechaCompraB;
+    }    
+    
+        
+    public boolean miComparadorDeProducto(Object obj1, Object obj2){
+        Producto prodA = ((Producto)obj1);
+        Producto prodB = ((Producto)obj2);
+        
+        return prodA.getNombreProd().equals(prodB.getNombreProd()) && prodA.getStockAct() == prodB.getStockAct() && prodA.getStockMin() == prodB.getStockMin();   
+    }
+    
+    @Override
+    public String toString(){
+        return this.getProducto().getNombreProd() + " - $" + Integer.toString(this.getPrecioProd());
     }
     
 }

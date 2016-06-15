@@ -9,6 +9,7 @@ import eiralesalomon.Interfaz.PantallaInicial;
 import java.io.FileInputStream;
 import java.io.BufferedInputStream;
 import java.io.ObjectInputStream;
+import java.text.ParseException;
 /**
  *
  * @author fsalomon
@@ -16,24 +17,8 @@ import java.io.ObjectInputStream;
 public class GastosDelHogar {
     
     
-    public static void main(String[] args) {
-        //Sistema s;
-       
-        //PARA RECUPERAR
-//            try{
-//                FileInputStream fff = new FileInputStream("GastosDelHogar.ser");
-//                BufferedInputStream bbb = new BufferedInputStream(fff);
-//                ObjectInputStream sss = new ObjectInputStream(bbb);
-//                s =(Sistema)(sss.readObject()); 
-//                  s = new Sistema();
-//            }catch(Exception e){ 
-//                s = new Sistema();
-//            }        
-//            
-//            PantallaInicial iPI = new PantallaInicial(s);
-//            iPI.setVisible(true); 
-            
-            
+    public static void main(String[] args) throws ParseException {
+
             Sistema s;
             try
             {
@@ -52,9 +37,5 @@ public class GastosDelHogar {
             iPI.setVisible(true); 
             
     }
-    
-    
-    
-  
 
 }

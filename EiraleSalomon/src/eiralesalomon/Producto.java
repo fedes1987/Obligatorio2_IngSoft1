@@ -6,7 +6,6 @@
 package eiralesalomon;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  *
@@ -20,8 +19,7 @@ public class Producto implements Serializable {
     private int stockAct;
 
     //Constructor
-    public Producto(String unNombreProd, int unStockMin,
-            int unStockAct){
+    public Producto(String unNombreProd, int unStockMin, int unStockAct){
         this.nombreProd = unNombreProd;
         this.stockMin = unStockMin;
         this.stockAct = unStockAct;
@@ -65,18 +63,28 @@ public class Producto implements Serializable {
     }
     
     public void quitaStock(){
-        this.stockAct--;
+        if(this.stockAct >0)
+            this.stockAct--;
     }
     
     public boolean alarmaStock(){
-        return (stockAct < stockMin) || (stockAct == stockMin);
+        return (stockAct <= stockMin);
     }
     
     @Override
     public boolean equals(Object o){
+        String nombreProdA = this.getNombreProd();
+        String nombreProdB = ((Producto)o).getNombreProd();
+        int stockMinProdA = this.getStockMin();
+        int stockMinProdB = ((Producto)o).getStockMin();
         
-        return this.getNombreProd()==((Producto)o).getNombreProd() && this.getStockMin()==((Producto)o).getStockMin();
-         
+        return nombreProdA.equals(nombreProdB) && stockMinProdA == stockMinProdB;
     }    
+    
+    @Override
+    public String toString(){
+        return this.getNombreProd() + " - stock mínimo: " + Integer.toString(this.getStockMin())
+                + " - stock actual: " + Integer.toString(this.getStockAct());
+    }
     
 }
