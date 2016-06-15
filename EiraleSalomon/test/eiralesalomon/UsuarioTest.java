@@ -51,9 +51,9 @@ public class UsuarioTest {
         usu.setListaCompra(listaCompra);
         
         //Usuario creado con constructor de clase con parámetros
-        Usuario usuClase = new Usuario(nombreUsu, aliasUsu, fechaNacUsu, listaProd, listaCompra);
+       // Usuario usuClase = new Usuario(nombreUsu, aliasUsu, fechaNacUsu, listaProd, listaCompra);
         //assertEquals(usu, usuClase);
-        assertEquals(true, miComparadorDeObjetos(usu, usuClase));
+      //  assertEquals(true, miComparadorDeObjetos(usu, usuClase));
     }
     
     @Test
