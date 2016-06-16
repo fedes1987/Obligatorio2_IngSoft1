@@ -59,4 +59,22 @@ public class GastoFijo implements Serializable {
         this.diaVenc = unDiaVenc;
     }
     
+    @Override
+    public boolean equals(Object o){
+        String nombreGF1 = this.getNombre();
+        String nombreGF2 = ((GastoFijo)o).getNombre();
+        int importeGF1 = this.getPrecio();
+        int importeGF2 = ((GastoFijo)o).getPrecio();
+        int diaVencGF1 = this.getDiaVenc();
+        int diaVencGF2 = ((GastoFijo)o).getDiaVenc();
+        
+        return (nombreGF1.equals(nombreGF2) && importeGF1 == importeGF2) && diaVencGF1 == diaVencGF2;
+    }   
+    
+    
+    @Override
+    public String toString(){
+        return this.getNombre() + " - $" + Integer.toString(this.getPrecio());
+    }
+    
 }

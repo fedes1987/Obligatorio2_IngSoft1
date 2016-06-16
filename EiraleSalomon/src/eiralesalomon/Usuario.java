@@ -10,32 +10,32 @@ import java.util.Date;
 import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Iterator;
 
 /**
  *
  * @author fsalomon
  */
 public class Usuario implements Serializable{
-    private int Id;
     private String Nombre;
     private String Alias;
     private Date FechaNac;
     private ArrayList<Producto> listaProd;
     private ArrayList<Compra> listaCompras;
-            
-    Sistema s;
+    private ArrayList<GastoFijo> listaGastosFijos;
     
     //Constructor
     public Usuario(String pNombre, String pAlias, Date pFechaNac, 
-            ArrayList<Producto> unaListaProd, ArrayList<Compra> unaListaCompra ){
+            ArrayList<Producto> unaListaProd, ArrayList<Compra> unaListaCompra,
+            ArrayList<GastoFijo> unaListaGastos){
         //this.Id = pId;
-        this.Nombre = pNombre;
-        this.Alias = pAlias;
-        this.FechaNac = pFechaNac;
-        this.listaProd = unaListaProd;
-        this.listaCompras = unaListaCompra;
+        this.setNombre(pNombre);
+        this.setAlias(pAlias);
+        this.setFechaNac(pFechaNac);
+        this.setListaProd(unaListaProd);
+        this.setListaCompra(unaListaCompra);
+        this.setListaGastos(unaListaGastos);
     }
     
     //Constructor vacío
@@ -45,13 +45,10 @@ public class Usuario implements Serializable{
         this.setFechaNac(null);
         this.setListaProd(new ArrayList<Producto>());
         this.setListaCompra(new ArrayList<Compra>());
+        this.setListaGastos(new ArrayList<GastoFijo>());
     }
     
     //GETs & SETs
-     public int getId() {
-        return Id;
-    }
-
     public String getNombre() {
         return Nombre;
     }
@@ -72,8 +69,8 @@ public class Usuario implements Serializable{
         return listaCompras;
     }
     
-    public void setId(int Id) {
-        this.Id = Id;
+    public ArrayList<GastoFijo> getListaGastos(){
+        return listaGastosFijos;
     }
 
     public void setNombre(String Nombre) {
@@ -96,19 +93,52 @@ public class Usuario implements Serializable{
         this.listaCompras = unaListaCompra;
     }
     
+    public void setListaGastos(ArrayList<GastoFijo> unaListaGastos){
+        this.listaGastosFijos = unaListaGastos;
+    }
+    
     //Add Listas
     public void agregarProd(Producto unProducto){
         this.listaProd.add(unProducto);
     }
     
-    public void agregarPartida(Compra unCompra){
+    public void agregarCompra(Compra unCompra){
         this.listaCompras.add(unCompra);
     }
     
-    public void CargarProdsDeLista() {
-	String csvFile = "ListaProductos.csv";
+    public void agregarGasto(GastoFijo unGasto){
+        this.listaGastosFijos.add(unGasto);
+    }
+    
+    public int ObtenerProducto(String unProdNombre){
+        Iterator <Producto> it = this.getListaProd().iterator();
+        int pos = 0;
+            while (it.hasNext()){
+                Producto unProducto = it.next();
+                if( unProducto.getNombreProd().equals(unProdNombre)){
+                    pos = this.getListaProd().indexOf(unProducto);
+                    break;
+                }
+            }
+        return pos;
+    }
+    
+    public boolean ejecutoAlarma(){
+        Iterator <Producto> it = this.getListaProd().iterator();
+        boolean alarma = false;
+            while (it.hasNext()){
+                if(it.next().alarmaStock()){
+                    alarma = true;
+                    break;                         
+                }
+            }
+        return alarma;
+    }
+    
+    public void cargarProdsDeLista(String path) {
+	String csvFile = path;// + "ListaProductos.csv";
 	BufferedReader br = null;
-	String line = "";
+	String line;
 	String csvSplitBy = ",";
         ArrayList<Producto> productosDeArchivo = new ArrayList();
          
@@ -127,21 +157,78 @@ public class Usuario implements Serializable{
 
                 productosDeArchivo.add(prod);
             }
-	} catch (FileNotFoundException e) {
-            e.printStackTrace();
-	} catch (IOException e) {
-            e.printStackTrace();
-	} finally {
             //cuando termina de iterar se setea el Arraylist del usuario con los valores leídos del archivo
             this.setListaProd(productosDeArchivo);
-            if (br != null) {
-                try {
-                        br.close();
-                } catch (IOException e) {
-                        e.printStackTrace();
+	}catch (IOException e) {
+            e.printStackTrace();
+	} 
+    }
+    
+    @Override
+    public boolean equals(Object o){
+        String nombreUsuA = this.getNombre();
+        String nombreUsuB = ((Usuario)o).getNombre();
+        String aliasUsuA = this.getAlias();
+        String aliasUsuB = ((Usuario)o).getAlias();
+        Date fechaNacUsuA = this.getFechaNac();
+        Date fechaNacUsuB = ((Usuario)o).getFechaNac();
+        ArrayList<Producto> listaProdUsuA = this.getListaProd();
+        ArrayList<Compra> listaCompraUsuA = this.getListaCompra();
+        ArrayList<Producto> listaProdUsuB = ((Usuario)o).getListaProd();
+        ArrayList<Compra> listaCompraUsuB = ((Usuario)o).getListaCompra();
+        
+        Boolean listaProdEsIgual = this.miComparadorDeProducto(listaProdUsuA, listaProdUsuB);
+        Boolean listaCompraEsIgual = this.miComparadorDeCompra(listaCompraUsuA, listaCompraUsuB);
+        
+        if(nombreUsuA.equals(nombreUsuB) && aliasUsuA.equals(aliasUsuB) && fechaNacUsuA == fechaNacUsuB && listaCompraEsIgual == true && listaProdEsIgual == true){
+            return true;
+        }else{
+            return false;
+        }  
+    }  
+    
+    
+    public boolean miComparadorDeProducto(ArrayList<Producto> lista1, ArrayList<Producto> lista2){
+        if(lista1.size() != lista2.size()){
+            return false;
+        }
+        else{
+            Iterator iteLista1 = lista1.iterator();
+            Iterator iteLista2 = lista2.iterator();
+            
+            while(iteLista1.hasNext() && iteLista2.hasNext()){
+                Producto prodA = ((Producto)iteLista1.next());
+                Producto prodB = ((Producto)iteLista2.next());
+                if(prodA.equals(prodB)){
+                }else{
+                    return false;
                 }
             }
-	}
-  }
+            return true;
+        }
+       
+    }
+    
+    
+    public boolean miComparadorDeCompra(ArrayList<Compra> lista1, ArrayList<Compra> lista2){
+        if(lista1.size() != lista2.size()){
+            return false;
+        }
+        else{
+            Iterator iteLista1 = lista1.iterator();
+            Iterator iteLista2 = lista2.iterator();
+            
+            while(iteLista1.hasNext() && iteLista2.hasNext()){
+                Compra compraA = ((Compra)iteLista1.next());
+                Compra compraB = ((Compra)iteLista2.next());
+                if(compraA.equals(compraB)){
+                }else{
+                    return false;
+                }
+            }
+            return true;
+        }
+       
+    }
    
 }
